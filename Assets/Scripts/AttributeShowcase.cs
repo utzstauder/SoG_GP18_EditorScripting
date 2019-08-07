@@ -10,9 +10,15 @@ public class AttributeShowcase : MonoBehaviour
     [CustomLabel("My Object")]
     public GameObject obj;
 
-    [StringDropdown]
-    public string street;
-
     [StringDropdown("a", "b", "100", "xxxasdasdas")]
     public string randomStuff;
+
+    [StringDropdown]
+    public string s;
+
+    [StringDropdown()]
+    public string street;
+
+    [StringDropdown("1", "2")]
+    public string singleOption;
 }

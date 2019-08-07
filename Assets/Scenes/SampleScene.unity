@@ -371,7 +371,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   obj: {fileID: 0}
-  street: three
+  street: 
+  randomStuff: xxxasdasdas
+  singleOption: 1
 --- !u!4 &1762547098
 Transform:
   m_ObjectHideFlags: 0
