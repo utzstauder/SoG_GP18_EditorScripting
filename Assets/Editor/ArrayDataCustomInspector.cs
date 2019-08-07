@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArrayDataCustomInspector : Editor
 {
     SerializedProperty numbersProperty;
+    bool foldout;
 
     public void OnEnable()
     {
@@ -13,9 +14,10 @@ public class ArrayDataCustomInspector : Editor
 
     public override void OnInspectorGUI()
     {
-        EditorGUILayout.LabelField(numbersProperty.displayName);
+        // EditorGUILayout.LabelField(numbersProperty.displayName);
 
-        EditorGUILayout.BeginVertical();
+        foldout = EditorGUILayout.BeginFoldoutHeaderGroup(foldout, numbersProperty.displayName);
+        if (foldout)
         {
             for (int i = 0; i < numbersProperty.arraySize; i++)
             {
@@ -30,7 +32,7 @@ public class ArrayDataCustomInspector : Editor
                 EditorGUILayout.EndHorizontal();
             }
         }
-        EditorGUILayout.EndVertical();
+        EditorGUILayout.EndFoldoutHeaderGroup();
 
         EditorGUILayout.BeginHorizontal();
         {
