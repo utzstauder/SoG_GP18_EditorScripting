@@ -15,16 +15,16 @@ public class SceneViewOverlay : Editor
     {
         //Debug.Log("duringSceneGui");
 
-        DrawToolbar(sceneView.position);
+        DrawToolbar(sceneView);
     }
 
-    private static void DrawToolbar(Rect sceneViewRect)
+    private static void DrawToolbar(SceneView sceneView)
     {
         Handles.BeginGUI();
         {
-            Rect rect = new Rect(sceneViewRect);
+            Rect rect = new Rect(sceneView.position);
             rect.x = 0;
-            rect.y = sceneViewRect.height - 36;
+            rect.y = sceneView.position.height - 36;
             GUILayout.BeginArea(rect, EditorStyles.toolbar);
             {
                 GUILayout.BeginHorizontal();
@@ -32,7 +32,7 @@ public class SceneViewOverlay : Editor
                     GUILayout.Button(EditorGUIUtility.IconContent("editicon.sml"), EditorStyles.toolbarButton);
                     if (GUILayout.Button(EditorGUIUtility.IconContent("BodyPartPicker"), EditorStyles.toolbarButton))
                     {
-                        Debug.Log("Click");
+                        SetCameraPosition(sceneView, Vector3.zero);
                     }
                     GUILayout.Button("Tool B", EditorStyles.toolbarButton);
                     GUILayout.Button("Tool C", EditorStyles.toolbarButton);
@@ -43,5 +43,10 @@ public class SceneViewOverlay : Editor
             GUILayout.EndArea();
         }
         Handles.EndGUI();
+    }
+
+    static void SetCameraPosition(SceneView sceneView, Vector3 position)
+    {
+        sceneView.pivot = position;   
     }
 }
